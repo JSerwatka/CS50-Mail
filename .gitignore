@@ -1,0 +1,7 @@
+db.sqlite3
+venv
+.vscode
+.history
+/mail/migrations
+/mail/__pycache__
+/project3/__pycache__
