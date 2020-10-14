@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
   sendEmailHandling();
 });
 
-
+// Creates new email block for mailbox view
 function newEmailBlock(email, emailsView, mailbox) {
   // Create new container
   let emailBlock = document.createElement("div");
@@ -21,8 +21,8 @@ function newEmailBlock(email, emailsView, mailbox) {
 
   // Save recipiants/sender as a single variable
   let users = (mailbox === "sent") ? email.recipients[0] : email.sender;
-  // Show recipients count only if it's greater than 1 
-  let usersCount = ((email.recipients.length > 1) && (mailbox === "sent")) ? email.recipients.length : "";
+  // Show additional recipients count only if overall count is greater than 1 
+  let usersCount = ((email.recipients.length > 1) && (mailbox === "sent")) ? `+${email.recipients.length-1}` : "";
 
   emailBlock.innerHTML = `
     <div class="users">${users}</div>
@@ -34,6 +34,7 @@ function newEmailBlock(email, emailsView, mailbox) {
   emailsView.appendChild(emailBlock);
 }
 
+// Show compose email
 function compose_email() {
 
   // Show compose view and hide other views
@@ -46,6 +47,7 @@ function compose_email() {
   document.querySelector('#compose-body').value = '';
 }
 
+// Show mailbox
 function load_mailbox(mailbox) {
   // Get main email container
   let emailsView = document.querySelector("#emails-view");
