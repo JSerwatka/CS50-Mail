@@ -12,6 +12,7 @@
     <hr>
 
     <div id="emails-view">
+
     </div>
 
     <div id="details-view">
@@ -37,5 +38,9 @@
 {% endblock %}
 
 {% block script %}
+    <script>
+        // Add thrash icon to use in mail/inbox.js file
+        let tharashIcon = "{% static 'mail/img/trash.png' %}";
+    </script>
     <script src="{% static 'mail/inbox.js' %}"></script>
 {% endblock %}

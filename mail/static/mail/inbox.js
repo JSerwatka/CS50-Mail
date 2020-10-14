@@ -18,6 +18,7 @@ function newEmailBlock(email, emailsView, mailbox) {
   // Create new container
   let emailBlock = document.createElement("div");
   emailBlock.className = "email-block";
+  
 
   // Listen for a click -> open the email 
   emailBlock.addEventListener("click", () => {
@@ -33,7 +34,12 @@ function newEmailBlock(email, emailsView, mailbox) {
     <div class="block-users">${users}</div>
     <div class="users-count">${usersCount}</div>
     <div class="block-subject">${email.subject}</div>
-    <div class="block-timestamp">${email.timestamp}</div>`;
+    <div class="block-timestamp">${email.timestamp}</div>
+    <div class="thrash-icon"><a href=""><img src="${tharashIcon}"></a></div>
+    <!-- <div>Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
+    
+    `;
+    
 
 
   // Inject to main mailbox container
