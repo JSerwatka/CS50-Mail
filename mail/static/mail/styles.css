@@ -2,6 +2,7 @@ textarea {
     min-height: 400px;
 }
 
+/* ------ Email block styles ------ */
 .email-block {
     padding: 20px;
     margin-bottom: 10px;
@@ -15,7 +16,7 @@ textarea {
     background: rgb(197, 196, 196);
 }
 
-.email-block .users {
+.email-block .block-users {
     grid-column: 1/3;
 }
 
@@ -23,9 +24,16 @@ textarea {
     grid-column: 3/4;
 }
 
-.email-block .subject {
+.email-block .block-subject {
     grid-column: 4/10;
 }
-.email-block .timestamp {
+
+.email-block .block-timestamp {
     grid-column: 10/13;
 }
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
+
+/* ------ Open email styles ------ */
+
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */

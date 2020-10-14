@@ -19,19 +19,26 @@ function newEmailBlock(email, emailsView, mailbox) {
   let emailBlock = document.createElement("div");
   emailBlock.className = "email-block";
 
+  // Listen for a click -> open the email 
+  emailBlock.addEventListener("click", () => {
+    openEmail(email)
+  })
+
   // Save recipiants/sender as a single variable
   let users = (mailbox === "sent") ? email.recipients[0] : email.sender;
   // Show additional recipients count only if overall count is greater than 1 
   let usersCount = ((email.recipients.length > 1) && (mailbox === "sent")) ? `+${email.recipients.length-1}` : "";
 
   emailBlock.innerHTML = `
-    <div class="users">${users}</div>
+    <div class="block-users">${users}</div>
     <div class="users-count">${usersCount}</div>
-    <div class="subject">${email.subject}</div>
-    <div class="timestamp">${email.timestamp}</div>`;
+    <div class="block-subject">${email.subject}</div>
+    <div class="block-timestamp">${email.timestamp}</div>`;
+
 
   // Inject to main mailbox container
   emailsView.appendChild(emailBlock);
+
 }
 
 // Show compose email
@@ -57,7 +64,7 @@ function load_mailbox(mailbox) {
   document.querySelector('#compose-view').style.display = 'none';
 
   // Show the mailbox name
-  document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
+  emailsView.innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
   
   // Get emails
   fetch(`/emails/${mailbox}`)
@@ -67,9 +74,24 @@ function load_mailbox(mailbox) {
       emails.forEach(email => {
         newEmailBlock(email, emailsView, mailbox);
       })      
-
-      // ... do something else with emails ...
   });
+}
+
+// Show email
+function openEmail(email) {
+ 
+    // Show the mailbox and hide other views
+    document.querySelector('#emails-view').style.display = 'block';
+    document.querySelector('#compose-view').style.display = 'none';
+
+    document.querySelector("#emails-view").innerHTML = `
+      <div class="email-sender"><b>From:</b> ${email.sender}</div>
+      <div class="email-recipients"><b>To:</b> ${email.recipients.join("; ")}</div>
+      <div class="email-subject"><b>Subject:</b> ${email.subject}</div>
+      <div class="email-timestamp"><b>Timestamp:</b> ${email.timestamp}</div>
+      <button class="btn btn-sm btn-outline-primary" id="replay">Replay</button>
+      <hr>
+      <div class="email-body">${email.body}</div>`;
 }
 
 // Send email function
