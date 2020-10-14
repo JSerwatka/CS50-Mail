@@ -98,6 +98,27 @@ function openEmail(email) {
       <hr>
       <div class="email-body">${email.body}</div>`;
 
+    // Check email as read if not already
+    if (email.read === false){
+      fetch(`/emails/${email.id}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          read: true
+        })
+      })
+      .then(response => {
+        if (response.status === 204) {
+          console.log(`email id:${email.id} is marked as read`)
+        } 
+        else {
+          throw new Error("Unknown error during email mark as read attampt")
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    }
+
     //TODO: add replay button logic
 }
 
