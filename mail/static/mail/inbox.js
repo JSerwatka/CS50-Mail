@@ -46,6 +46,7 @@ function compose_email() {
 
   // Show compose view and hide other views
   document.querySelector('#emails-view').style.display = 'none';
+  document.querySelector('#details-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'block';
 
   // Clear out composition fields
@@ -61,6 +62,7 @@ function load_mailbox(mailbox) {
   
   // Show the mailbox and hide other views
   document.querySelector('#emails-view').style.display = 'block';
+  document.querySelector('#details-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'none';
 
   // Show the mailbox name
@@ -80,11 +82,14 @@ function load_mailbox(mailbox) {
 // Show email
 function openEmail(email) {
  
-    // Show the mailbox and hide other views
-    document.querySelector('#emails-view').style.display = 'block';
+    // Show the details-view and hide other views
+    document.querySelector('#emails-view').style.display = 'none';
+    document.querySelector('#details-view').style.display = 'block';
     document.querySelector('#compose-view').style.display = 'none';
 
-    document.querySelector("#emails-view").innerHTML = `
+
+    // Fill with email info
+    document.querySelector("#details-view").innerHTML = `
       <div class="email-sender"><b>From:</b> ${email.sender}</div>
       <div class="email-recipients"><b>To:</b> ${email.recipients.join("; ")}</div>
       <div class="email-subject"><b>Subject:</b> ${email.subject}</div>
@@ -92,6 +97,8 @@ function openEmail(email) {
       <button class="btn btn-sm btn-outline-primary" id="replay">Replay</button>
       <hr>
       <div class="email-body">${email.body}</div>`;
+
+    //TODO: add replay button logic
 }
 
 // Send email function
