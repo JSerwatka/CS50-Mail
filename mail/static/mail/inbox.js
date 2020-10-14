@@ -14,10 +14,25 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+function newEmailBlock(email, emailsView, mailbox) {
+  // Create new container
+  let emailBlock = document.createElement("div");
+  emailBlock.className = "email-block";
 
+  // Save recipiants/sender as a single variable
+  let users = (mailbox === "sent") ? email.recipients[0] : email.sender;
+  // Show recipients count only if it's greater than 1 
+  let usersCount = ((email.recipients.length > 1) && (mailbox === "sent")) ? email.recipients.length : "";
 
+  emailBlock.innerHTML = `
+    <div class="users">${users}</div>
+    <div class="users-count">${usersCount}</div>
+    <div class="subject">${email.subject}</div>
+    <div class="timestamp">${email.timestamp}</div>`;
 
-
+  // Inject to main mailbox container
+  emailsView.appendChild(emailBlock);
+}
 
 function compose_email() {
 
@@ -32,6 +47,8 @@ function compose_email() {
 }
 
 function load_mailbox(mailbox) {
+  // Get main email container
+  let emailsView = document.querySelector("#emails-view");
   
   // Show the mailbox and hide other views
   document.querySelector('#emails-view').style.display = 'block';
@@ -41,6 +58,16 @@ function load_mailbox(mailbox) {
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
   
   // Get emails
+  fetch(`/emails/${mailbox}`)
+  .then(response => response.json())
+  .then(emails => {
+      // For each mail - compose a div and inject it to emailsView
+      emails.forEach(email => {
+        newEmailBlock(email, emailsView, mailbox);
+      })      
+
+      // ... do something else with emails ...
+  });
 }
 
 // Send email function

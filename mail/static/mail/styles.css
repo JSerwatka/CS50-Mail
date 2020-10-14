@@ -1,3 +1,15 @@
 textarea {
     min-height: 400px;
 }
+
+.email-block {
+    padding: 10px 0px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+}
+
+
+.email-block:hover {
+    border: 1px solid rgb(122, 121, 121);
+    background: rgb(197, 196, 196);
+}
