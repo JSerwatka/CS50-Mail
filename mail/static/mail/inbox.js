@@ -56,12 +56,19 @@ function archiveControl(email, icon, toArchive) {
   })
   .then(response => {
     if (response.status === 204) {
+      // Change icon trash->unarchive unarchive->trash
       if (toArchive) {
         console.log(`email id:${email.id} is marked as archived`)
+        icon.src = unarchiveIcon;
+        icon.parentNode.className = "unarchive-icon"
       }
       else {
         console.log(`email id:${email.id} is marked as unarchived`)
+        icon.src = archiveIcon;
+        icon.parentNode.className = "archive-icon"
       }
+      // Refresh page
+      load_mailbox('inbox');
     } 
     else {
       throw new Error("Unknown error during email mark as archived attampt")
@@ -70,17 +77,6 @@ function archiveControl(email, icon, toArchive) {
   .catch(error => {
     console.log(error)
   })
-
-  // Change icon trash->unarchive unarchive->trash
-  if (toArchive) {
-    icon.src = unarchiveIcon;
-    icon.parentNode.className = "unarchive-icon"
-  }
-  else {
-    icon.src = archiveIcon;
-    icon.parentNode.className = "archive-icon"
-  }
-  
 }
 
 // Show compose email
@@ -116,6 +112,7 @@ function load_mailbox(mailbox) {
   .then(emails => {
       // For each mail - compose a div and inject it into emailsView
       emails.forEach(email => {
+        console.log(email)
         newEmailBlock(email, emailsView, mailbox);
       })
 
@@ -131,11 +128,9 @@ function load_mailbox(mailbox) {
           
           // Archive/unarchive this email
           archiveControl(email, event.target, toArchive);
-          // Refresh page
-          load_mailbox('inbox');
         })
       })
-      
+         
   });
 }
 
