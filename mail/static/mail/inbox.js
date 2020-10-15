@@ -18,12 +18,6 @@ function newEmailBlock(email, emailsView, mailbox) {
   // Create new container
   let emailBlock = document.createElement("div");
   emailBlock.className = "email-block";
-  
-
-  // Listen for a click -> open the email 
-  emailBlock.addEventListener("click", () => {
-    openEmail(email)
-  })
 
   // Save recipiants/sender as a single variable
   let users = (mailbox === "sent") ? email.recipients[0] : email.sender;
@@ -35,16 +29,16 @@ function newEmailBlock(email, emailsView, mailbox) {
     <div class="users-count">${usersCount}</div>
     <div class="block-subject">${email.subject}</div>
     <div class="block-timestamp">${email.timestamp}</div>
-    <div class="thrash-icon"><a href=""><img src="${tharashIcon}"></a></div>
-    <!-- <div>Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
-    
-    `;
-    
-
-
+    <div class="trash-icon"><img src="${trashIcon}"></div>
+    <!-- <div>Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->`;
+  
+  // Listen for email block click -> open the email 
+  emailBlock.addEventListener("click", () => {
+    openEmail(email)
+  })  
+  
   // Inject to main mailbox container
   emailsView.appendChild(emailBlock);
-
 }
 
 // Show compose email
@@ -78,10 +72,20 @@ function load_mailbox(mailbox) {
   fetch(`/emails/${mailbox}`)
   .then(response => response.json())
   .then(emails => {
-      // For each mail - compose a div and inject it to emailsView
+      // For each mail - compose a div and inject it into emailsView
       emails.forEach(email => {
         newEmailBlock(email, emailsView, mailbox);
-      })      
+      })
+
+      // Listen for trash icon click -> archive an email
+      // TODO: trash
+      document.querySelectorAll(".trash-icon").forEach(element => {
+        element.addEventListener("click", (event) => {
+          event.stopPropagation();
+          console.log("trash clicked");
+        })
+      })
+      
   });
 }
 
