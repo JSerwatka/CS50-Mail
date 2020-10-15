@@ -251,6 +251,8 @@ function sendEmailHandling() {
 function backgroudControl() {
   let bodyNode = document.querySelector("body");
   let checkbox = document.querySelector("#animation-checkbox");
+  let shoutout = document.querySelector("div.shoutout");
+  
 
   // Control checkbox - run/pause animation
   checkbox.addEventListener("change", () => {
@@ -261,7 +263,27 @@ function backgroudControl() {
   document.querySelectorAll(".dropdown-item input[name='backgroud']").forEach(radio => {
     radio.addEventListener("change", () => {
       let selectedBg = document.querySelector('input[name="backgroud"]:checked').value;
+      // Add info about photo
+      switch (selectedBg) {
+        case "abstract-1":
+          shoutout.innerHTML = 'Photo by <a href="shorturl.at/actzZ">Paweł Czerwiński</a> on <a href="shorturl.at/iqSW0">Unsplash</a>'
+          break;
+        case "abstract-2":
+          shoutout.innerHTML = 'Photo by <a href="shorturl.at/oqtuO">W</a> on <a href="shorturl.at/iqSW0">Unsplash</a>'
+          break;
+        case "abstract-3":
+          shoutout.innerHTML = 'Photo by <a href="shorturl.at/eotNO">Jr Korpa</a> on <a href="shorturl.at/iqSW0">Unsplash</a>'
+          break;
+        case "abstract-4":
+          shoutout.innerHTML = 'Photo by <a href="shorturl.at/xzEL2">Jr Korpa</a> on <a href="shorturl.at/iqSW0">Unsplash</a>'
+          break;      
+        default:
+          console.log("invalid item")
+          break;
+      }
+
       bodyNode.className = selectedBg;
+      bodyNode.prepend(shoutout)
     });
   }); 
 }
