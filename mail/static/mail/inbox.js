@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Add send/compose handling
   sendEmailHandling();
+
+  //Backgroud change hangling
+  backgroudControl();
 });
 
 // Creates new email block for mailbox view
@@ -242,4 +245,23 @@ function sendEmailHandling() {
       alert(error);
     })
   });
+}
+
+// Controls backgroud selection from dropdown menu
+function backgroudControl() {
+  let bodyNode = document.querySelector("body");
+  let checkbox = document.querySelector("#animation-checkbox");
+
+  // Control checkbox - run/pause animation
+  checkbox.addEventListener("change", () => {
+    bodyNode.style.animationPlayState = (checkbox.checked) ? "running" : "paused";
+  })
+
+  // Control radios - change backgroud
+  document.querySelectorAll(".dropdown-item input[name='backgroud']").forEach(radio => {
+    radio.addEventListener("change", () => {
+      let selectedBg = document.querySelector('input[name="backgroud"]:checked').value;
+      bodyNode.className = selectedBg;
+    });
+  }); 
 }
