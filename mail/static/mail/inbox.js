@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('#inbox').addEventListener('click', () => load_mailbox('inbox'));
   document.querySelector('#sent').addEventListener('click', () => load_mailbox('sent'));
   document.querySelector('#archived').addEventListener('click', () => load_mailbox('archive'));
-  document.querySelector('#compose').addEventListener('click', compose_email);
+  document.querySelector('#compose').addEventListener('click', () => compose_email());
 
   // By default, load the inbox
   load_mailbox('inbox');
@@ -67,7 +67,7 @@ function archiveControl(email, icon, toArchive) {
         icon.src = archiveIcon;
         icon.parentNode.className = "archive-icon"
       }
-      // Refresh page
+      // Refresh the page
       load_mailbox('inbox');
     } 
     else {
@@ -80,17 +80,36 @@ function archiveControl(email, icon, toArchive) {
 }
 
 // Show compose email
-function compose_email() {
+function compose_email(replyEmail=null) {
 
   // Show compose view and hide other views
   document.querySelector('#emails-view').style.display = 'none';
   document.querySelector('#details-view').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'block';
 
-  // Clear out composition fields
-  document.querySelector('#compose-recipients').value = '';
-  document.querySelector('#compose-subject').value = '';
-  document.querySelector('#compose-body').value = '';
+  // If this is a reply - populate with data
+  if (replyEmail !== null) {
+    document.querySelector('#compose-recipients').value = replyEmail.sender;
+    // Body = sender's mail + timestamp
+    document.querySelector('#compose-body').value = `
+    " On ${replyEmail.timestamp} ${replyEmail.sender} wrote: 
+     ${replyEmail.body}"`;
+    // Add Re: only if it's a first reply
+    if (replyEmail.subject.slice(0,3) === "Re:") {
+      document.querySelector('#compose-subject').value = replyEmail.subject;
+    }
+    else {
+      document.querySelector('#compose-subject').value = "Re: " + replyEmail.subject;
+    }
+  }
+  // Else - clear out composition fields
+  else {
+    document.querySelector('#compose-recipients').value = '';
+    document.querySelector('#compose-subject').value = '';
+    document.querySelector('#compose-body').value = '';
+  }
+
+
 }
 
 // Show mailbox
@@ -112,7 +131,6 @@ function load_mailbox(mailbox) {
   .then(emails => {
       // For each mail - compose a div and inject it into emailsView
       emails.forEach(email => {
-        console.log(email)
         newEmailBlock(email, emailsView, mailbox);
       })
 
@@ -149,7 +167,7 @@ function openEmail(email) {
       <div class="email-recipients"><b>To:</b> ${email.recipients.join("; ")}</div>
       <div class="email-subject"><b>Subject:</b> ${email.subject}</div>
       <div class="email-timestamp"><b>Timestamp:</b> ${email.timestamp}</div>
-      <button class="btn btn-sm btn-outline-primary" id="replay">Replay</button>
+      <button class="btn btn-sm btn-outline-primary" id="reply">Reply</button>
       <hr>
       <div class="email-body">${email.body}</div>`;
 
@@ -174,7 +192,10 @@ function openEmail(email) {
       })
     }
 
-    //TODO: add replay button logic
+    document.querySelector("#reply").addEventListener("click", () => {
+      compose_email(email);
+    })
+
 }
 
 // Send email function
