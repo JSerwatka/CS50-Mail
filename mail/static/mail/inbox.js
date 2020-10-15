@@ -19,6 +19,16 @@ function newEmailBlock(email, emailsView, mailbox) {
   let emailBlock = document.createElement("div");
   emailBlock.className = "email-block";
   emailBlock.id = email.id;
+  
+  //Check id read/unread and set proper class
+  if (email.read) {
+    emailBlock.classList.add("read")
+    emailBlock.classList.remove("unread")
+  } 
+  else {
+    emailBlock.classList.add("unread")
+    emailBlock.classList.remove("read")
+  }
 
   // Save recipiants/sender as a single variable
   let users = (mailbox === "sent") ? email.recipients[0] : email.sender;
