@@ -40,7 +40,8 @@
 {% block script %}
     <script>
         // Add trash icon to use in mail/inbox.js file
-        let trashIcon = "{% static 'mail/img/trash.png' %}";
+        let archiveIcon = "{% static 'mail/img/trash.png' %}";
+        let unarchiveIcon = "{% static 'mail/img/unarchive.png' %}";
     </script>
     <script src="{% static 'mail/inbox.js' %}"></script>
 {% endblock %}

@@ -18,18 +18,22 @@ function newEmailBlock(email, emailsView, mailbox) {
   // Create new container
   let emailBlock = document.createElement("div");
   emailBlock.className = "email-block";
+  emailBlock.id = email.id;
 
   // Save recipiants/sender as a single variable
   let users = (mailbox === "sent") ? email.recipients[0] : email.sender;
   // Show additional recipients count only if overall count is greater than 1 
   let usersCount = ((email.recipients.length > 1) && (mailbox === "sent")) ? `+${email.recipients.length-1}` : "";
+  // Check if email archived or unarchived and set proper variables
+  let isArchivedIcon = (email.archived) ? unarchiveIcon : archiveIcon;
+  let isArchivedClass = (email.archived) ? "unarchive-icon" : "archive-icon";
 
   emailBlock.innerHTML = `
     <div class="block-users">${users}</div>
     <div class="users-count">${usersCount}</div>
     <div class="block-subject">${email.subject}</div>
     <div class="block-timestamp">${email.timestamp}</div>
-    <div class="trash-icon"><img src="${trashIcon}"></div>
+    <div class=${isArchivedClass}><img src="${isArchivedIcon}"></div>
     <!-- <div>Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->`;
   
   // Listen for email block click -> open the email 
@@ -39,6 +43,44 @@ function newEmailBlock(email, emailsView, mailbox) {
   
   // Inject to main mailbox container
   emailsView.appendChild(emailBlock);
+}
+
+// Archive/Unarchive email
+function archiveControl(email, icon, toArchive) {
+  // Update archive/unarchive status
+  fetch(`/emails/${email.id}`, {
+    method: "PUT",
+    body: JSON.stringify({
+      archived: toArchive
+    })
+  })
+  .then(response => {
+    if (response.status === 204) {
+      if (toArchive) {
+        console.log(`email id:${email.id} is marked as archived`)
+      }
+      else {
+        console.log(`email id:${email.id} is marked as unarchived`)
+      }
+    } 
+    else {
+      throw new Error("Unknown error during email mark as archived attampt")
+    }
+  })
+  .catch(error => {
+    console.log(error)
+  })
+
+  // Change icon trash->unarchive unarchive->trash
+  if (toArchive) {
+    icon.src = unarchiveIcon;
+    icon.parentNode.className = "unarchive-icon"
+  }
+  else {
+    icon.src = archiveIcon;
+    icon.parentNode.className = "archive-icon"
+  }
+  
 }
 
 // Show compose email
@@ -77,12 +119,20 @@ function load_mailbox(mailbox) {
         newEmailBlock(email, emailsView, mailbox);
       })
 
-      // Listen for trash icon click -> archive an email
-      // TODO: trash
-      document.querySelectorAll(".trash-icon").forEach(element => {
+      // Listen for archive-icon click -> archive an email v unarchive-icon -> unarchive
+      // TODO: trash logic inside newEmailBlock (than I can delete email id as block id)
+      document.querySelectorAll(".archive-icon, .unarchive-icon").forEach(element => {
         element.addEventListener("click", (event) => {
           event.stopPropagation();
-          console.log("trash clicked");
+          // Get email's id
+          let email = event.target.parentNode.parentNode;
+          // Check if archive or unarchive
+          let toArchive = (event.target.parentNode.className === "archive-icon") ? true : false;
+          
+          // Archive/unarchive this email
+          archiveControl(email, event.target, toArchive);
+          // Refresh page
+          load_mailbox('inbox');
         })
       })
       
