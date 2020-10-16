@@ -1,4 +1,7 @@
 // TODO: Email - infinity scroll
+// TODO: Comments in js fix
+// TODO: Save history to use back/forward withou logging out
+// TODO: mark as unread option
 
 document.addEventListener('DOMContentLoaded', function() {
 
