@@ -4,8 +4,8 @@
     3. user email on top style
     4. email read/undread better styles
     5. email-details view styling
-    6. shoutut overlay fix
     7. prześlij button fix
+    8. archive animation
 */
 
 
@@ -176,8 +176,16 @@ textarea {
 /* ------ other styles ------ */
 .shoutout {
     background-color: rgba(255, 255, 255, 0.151);
-    float: right;
+    border-radius: 10px;
     padding: 3px;
-    margin-bottom: 10px;
+    margin: 0px 0px 20px auto;
+    display: block;
+    width: 300px;
+    text-align: center;
 }
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
+
+
+/* ------ media queries ------ */
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
