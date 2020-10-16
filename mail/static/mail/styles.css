@@ -1,10 +1,6 @@
 /* TODO: 
-    1. button styles for every backgroud
-    2. email block style
     3. user email on top style
-    4. email read/undread better styles
     5. email-details view styling
-    7. prześlij button fix
     8. archive animation
 */
 
@@ -72,10 +68,21 @@
 }
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
-/* ------ buttons styles ------ */
+/* ------ Main Buttons styles ------ */
 /* Default button style */
-.btn {
+.btn-outline-primary {
     background-color: rgba(255, 255, 255, 0.35);
+}
+
+.abstract-1 .btn-outline-primary, .gradient .btn-outline-primary{
+    background-color: rgba(255, 255, 255, 0.5);
+    font-weight: 460;
+    color: #0062ca;
+}
+
+.abstract-1 .btn-outline-primary:hover, .gradient .btn-outline-primary:hover {
+    color: #ffffff;
+    background-color: #007bff;
 }
 
 #backgroud-button {
@@ -83,6 +90,7 @@
     top: -30px;
     float: right;
 }
+
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
 /* ------ Email block styles ------ */
@@ -174,7 +182,7 @@
 
 /* ------ Compose email styles ------ */
 #compose-form input[type="submit"] {
-    margin-top: 20px;
+    margin: 20px 0px 10px 0px;
     float: right;
 }
 
@@ -183,7 +191,7 @@ textarea {
 }
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
-/* ------ other styles ------ */
+/* ------ Other styles ------ */
 .shoutout {
     background-color: rgba(255, 255, 255, 0.151);
     border-radius: 10px;
