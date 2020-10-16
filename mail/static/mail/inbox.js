@@ -268,6 +268,7 @@ function backgroudControl() {
   document.querySelectorAll(".dropdown-item input[name='backgroud']").forEach(radio => {
     radio.addEventListener("change", () => {
       let selectedBg = document.querySelector('input[name="backgroud"]:checked').value;
+      shoutout.style.visibility = "visible";
       // Add info about photo
       switch (selectedBg) {
         case "abstract-1":
@@ -284,6 +285,8 @@ function backgroudControl() {
           break;      
         case "gradient":
           shoutout.innerHTML = '';
+          shoutout.style.visibility = "hidden";
+          //
           break;      
         default:
           console.log("invalid item")

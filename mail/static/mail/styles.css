@@ -93,10 +93,10 @@
     max-width: 100%;
     box-sizing: border-box;
     display: grid;
-    grid-template-columns: 1fr 1fr minmax(25px, auto) 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr minmax(25px, auto);
+    grid-template-columns:  minmax(60px, auto) minmax(60px, auto) minmax(25px, auto) 1fr 1fr 1fr 1fr 1fr 1fr minmax(60px, auto) minmax(60px, auto) minmax(25px, auto);
     grid-auto-rows: minmax(70px, auto);
     align-items: center;
-    gap: 5px;
+    gap: 7px;
     border-radius: 10px 10px 10px 10px;
     box-shadow: 4px -2px 22px -5px rgba(53, 52, 52, 0.75); 
     transition: background 0.15s;
@@ -138,12 +138,15 @@
 
 .email-block .block-subject {
     grid-column: 4/10;
-    /* TODO: fix overflow */
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .email-block .block-timestamp {
     grid-column: 10/12;
+    font-size: 12px;
+    color: rgb(92, 92, 92);
 }
 
 .email-block .archive-icon {
@@ -183,6 +186,7 @@ textarea {
     margin: 0px 0px 20px auto;
     display: block;
     width: 300px;
+    min-height: 30px;
     text-align: center;
 }
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
