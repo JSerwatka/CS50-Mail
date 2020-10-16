@@ -272,16 +272,16 @@ function backgroudControl() {
       // Add info about photo
       switch (selectedBg) {
         case "abstract-1":
-          shoutout.innerHTML = 'Photo by <a href="shorturl.at/actzZ">Paweł Czerwiński</a> on <a href="shorturl.at/iqSW0">Unsplash</a>';
+          shoutout.innerHTML = 'Photo by Photo by <a href="https://unsplash.com/@pawel_czerwinski?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Paweł Czerwiński</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>';
           break;
         case "abstract-2":
-          shoutout.innerHTML = 'Photo by <a href="shorturl.at/oqtuO">W</a> on <a href="shorturl.at/iqSW0">Unsplash</a>';
+          shoutout.innerHTML = 'Photo by <a href="https://unsplash.com/@ewxy?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">W</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>';
           break;
         case "abstract-3":
-          shoutout.innerHTML = 'Photo by <a href="shorturl.at/eotNO">Jr Korpa</a> on <a href="shorturl.at/iqSW0">Unsplash</a>';
+          shoutout.innerHTML = 'Photo by <a href="https://unsplash.com/@korpa?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jr Korpa</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>';
           break;
         case "abstract-4":
-          shoutout.innerHTML = 'Photo by <a href="shorturl.at/xzEL2">Jr Korpa</a> on <a href="shorturl.at/iqSW0">Unsplash</a>';
+          shoutout.innerHTML = 'Photo by <a href="https://unsplash.com/@korpa?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jr Korpa</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>';
           break;      
         case "gradient":
           shoutout.innerHTML = '';

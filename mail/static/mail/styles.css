@@ -198,12 +198,21 @@ textarea {
     padding: 3px;
     margin: 0px 0px 20px auto;
     display: block;
-    width: 300px;
-    min-height: 30px;
+    width: 270px;
+    min-height: 25px;
     text-align: center;
+    font-size: 0.8em;
+}
+
+.shoutout a {
+    color: rgb(41, 56, 85);
+    font-weight: 500;
+}
+
+.shoutout a:hover {
+    color: rgb(31, 40, 58);
 }
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
-
 
 
 /* ------ media queries ------ */
