@@ -154,7 +154,7 @@
     color: rgb(92, 92, 92);
 }
 
-.email-block .archive-icon {
+.email-block .archive-icon, .email-block .unarchive-icon {
     grid-column: 12/13;
     text-align: right;
 }
@@ -199,4 +199,39 @@ textarea {
 
 
 /* ------ media queries ------ */
+@media screen and (max-width: 780px) {
+    .email-block {
+        padding: 20px;
+        grid-template-columns:  minmax(30px, auto) minmax(30px, auto) minmax(25px, auto) 1fr;
+        grid-auto-rows: minmax(15px, auto);
+        align-items: center;
+        gap: 7px;
+    }
+
+    /* Every email-block part */
+    .email-block .block-users {
+        grid-column: 1/3;
+        grid-row: 1/2;
+    }
+
+    .email-block .users-count {
+        grid-column: 3/4;
+        grid-row: 1/2;
+    }
+
+    .email-block .block-subject {
+        grid-column: 1/4;
+        grid-row: 2/3;
+    }
+
+    .email-block .block-timestamp {
+        grid-column: 1/3;
+        grid-row: 3/4;
+    }
+
+    .email-block .archive-icon, .email-block .unarchive-icon {
+        grid-column: 4/5;
+        grid-row: 3/4;
+    }
+}
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
