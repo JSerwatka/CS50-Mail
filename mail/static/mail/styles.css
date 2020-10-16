@@ -202,6 +202,7 @@ textarea {
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
 /* ------ Other styles ------ */
+/* shoutout */
 .shoutout {
     background-color: rgba(255, 255, 255, 0.151);
     border-radius: 10px;
@@ -221,6 +222,11 @@ textarea {
 
 .shoutout a:hover {
     color: rgb(31, 40, 58);
+}
+
+#details-view div.email-body {
+    max-height: 550px;
+    overflow: auto;
 }
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
