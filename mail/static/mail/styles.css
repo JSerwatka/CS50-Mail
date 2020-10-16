@@ -1,7 +1,7 @@
 /* TODO: 
     3. user email on top style
-    5. email-details view styling
     8. archive animation
+    9. small screens backgroud button overflow
 */
 
 /* ------ Main Containers styles ------ */
@@ -11,6 +11,16 @@ div.container {
     background: rgba(255, 255, 255, 0.27);
     box-shadow: 0px 0px 24px 26px rgba(255, 255, 255, 0.27);
     height: 90%;
+}
+
+#emails-view {
+    /* max-height: 700px;
+    overflow: auto; */
+}
+
+#details-view div.email-body {
+    max-height: 550px;
+    overflow: auto;
 }
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
@@ -222,11 +232,6 @@ textarea {
 
 .shoutout a:hover {
     color: rgb(31, 40, 58);
-}
-
-#details-view div.email-body {
-    max-height: 550px;
-    overflow: auto;
 }
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
