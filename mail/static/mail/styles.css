@@ -1,5 +1,13 @@
-/* ------ backgroud styles ------ */
+/* TODO: 
+    1. button styles for every backgroud
+    2. email block style
+    3. user email on top style
+    4. email read/undread better styles
+    5. email-details view styling
+*/
 
+
+/* ------ backgroud styles ------ */
 /* Abstract styles */
 .abstract-1 {
     background-image: url("./img/abstract-bg1.jpg");
