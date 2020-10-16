@@ -272,7 +272,7 @@ function backgroudControl() {
       // Add info about photo
       switch (selectedBg) {
         case "abstract-1":
-          shoutout.innerHTML = 'Photo by Photo by <a href="https://unsplash.com/@pawel_czerwinski?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Paweł Czerwiński</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>';
+          shoutout.innerHTML = 'Photo by <a href="https://unsplash.com/@pawel_czerwinski?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Paweł Czerwiński</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>';
           break;
         case "abstract-2":
           shoutout.innerHTML = 'Photo by <a href="https://unsplash.com/@ewxy?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">W</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>';

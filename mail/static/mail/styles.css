@@ -4,21 +4,31 @@
     8. archive animation
 */
 
+/* ------ Main Containers styles ------ */
+html,body { height:100%; }
 
-/* ------ backgroud styles ------ */
+div.container {
+    background: rgba(255, 255, 255, 0.27);
+    box-shadow: 0px 0px 24px 26px rgba(255, 255, 255, 0.27);
+    height: 90%;
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
+
+/* ------ Backgroud styles ------ */
 /* Abstract styles */
 .abstract-1 {
     background-image: url("./img/abstract-bg1.jpg");
     background-position: center center;
-    animation: bg-abstract-img 20s ease-out 0s infinite alternate;
-    -webkit-animation: bg-abstract-img 20s ease-out 0s infinite alternate;
+    animation: bg-abstract-img 50s ease-out 0s infinite alternate;
+    -webkit-animation: bg-abstract-img 50s ease-out 0s infinite alternate;
     animation-play-state: paused;
 }
 
 .abstract-2 {
     background-image: url("./img/abstract-bg2.jpg");
-    animation: bg-abstract-img 20s ease-out 0s infinite alternate;
-    -webkit-animation: bg-abstract-img 20s ease-out 0s infinite alternate;
+    animation: bg-abstract-img 15s ease-out 0s infinite alternate;
+    -webkit-animation: bg-abstract-img 15s ease-out 0s infinite alternate;
     animation-play-state: paused;
 }
 
