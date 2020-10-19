@@ -1,4 +1,3 @@
-// TODO: Email - infinity scroll
 // TODO: Comments in js fix
 // TODO: Save history to use back/forward withou logging out
 // TODO: mark as unread option
@@ -159,11 +158,18 @@ function load_mailbox(mailbox) {
           event.stopPropagation();
           // Get email's id
           let email = event.target.parentNode.parentNode;
-          // Check if archive or unarchive
-          let toArchive = (event.target.parentNode.className === "archive-icon") ? true : false;
-          
-          // Archive/unarchive this email
-          archiveControl(email, event.target, toArchive);
+
+          // Run hide animation
+          email.style.animationPlayState = "running";
+
+          // After animation - archive an email
+          email.addEventListener("animationend", () => {
+            // Check if archive or unarchive
+            let toArchive = (event.target.parentNode.className === "archive-icon") ? true : false;
+            
+            // Archive/unarchive this email
+            archiveControl(email, event.target, toArchive);
+          });
         })
       })
          

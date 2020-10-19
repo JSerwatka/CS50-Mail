@@ -1,5 +1,4 @@
 /* TODO: 
-    3. user email on top style
     8. archive animation
 */
 
@@ -126,6 +125,33 @@ div.container {
     border-radius: 10px 10px 10px 10px;
     box-shadow: 4px -2px 10px -5px rgba(53, 52, 52, 0.75); 
     transition: background 0.15s;
+    animation: hide 1s forwards paused ease-out;
+}
+
+@keyframes hide {
+    0% {
+        opacity: 1;
+        height: 100%;
+        line-height: 100%;
+        margin-bottom: 10px;
+        grid-auto-rows: minmax(70px, auto);
+    }
+
+    70% {
+        opacity: 0;
+        height: 100%;
+        line-height: 100%;
+        margin-bottom: 10px;
+        grid-auto-rows: minmax(70px, auto);
+    }
+
+    100% {
+        opacity: 0;
+        height: 0px;
+        line-height: 0px;
+        margin-bottom: 0px;
+        grid-auto-rows: 0px;
+    }
 }
 
 .email-block:hover {
