@@ -339,15 +339,33 @@ textarea {
     color: rgb(31, 40, 58);
 }
 
-/* User email font */
-.container h2 {
+/* Headers font */
+h1, h2, h3 {
     font-family: "Sora";
-    margin-bottom: 20px;
 }
 
 @font-face {
     font-family: "Sora";
     src: url("../mail/fonts/Sora-Regular.ttf")
+}
+
+.container h2 {
+    margin-bottom: 20px;
+}
+
+
+/* Register here text */
+.register-login-here {
+    margin-top: 20px;
+}
+
+.register-login-here a {
+    color:rgb(41, 56, 85);
+    font-weight: 450;
+}
+
+.register-login-here a:hover {
+    color: rgb(31, 40, 58);
 }
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
