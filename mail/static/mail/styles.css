@@ -1,7 +1,6 @@
 /* TODO: 
     3. user email on top style
     8. archive animation
-    9. small screens backgroud button overflow
 */
 
 /* ------ Main Containers styles ------ */
@@ -316,6 +315,16 @@ textarea {
 
 .shoutout a:hover {
     color: rgb(31, 40, 58);
+}
+
+/* User email font */
+.container h2 {
+    font-family: "Sora";
+}
+
+@font-face {
+    font-family: "Sora";
+    src: url("../mail/fonts/Sora-Regular.ttf")
 }
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
