@@ -185,7 +185,8 @@ function openEmail(email) {
       <div class="email-recipients"><b>To:</b> ${email.recipients.join("; ")}</div>
       <div class="email-subject"><b>Subject:</b> ${email.subject}</div>
       <div class="email-timestamp"><b>Timestamp:</b> ${email.timestamp}</div>
-      <button class="btn btn-sm btn-outline-primary" id="reply">Reply</button>
+      <button class="btn btn-sm btn-outline-primary" id="reply"><img src="${replyBlueIcon}">Reply</button>
+      <!--Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>-->
       <hr>
       <div class="email-body">${email.body}</div>`;
 
@@ -210,7 +211,19 @@ function openEmail(email) {
       })
     }
 
-    document.querySelector("#reply").addEventListener("click", () => {
+    let replyButton = document.querySelector("#reply");
+
+    // Change color of reply icon if it's hover state or not
+    replyButton.addEventListener("mouseover", () => {
+      replyButton.firstElementChild.src = `${replyWhiteIcon}`;
+    })
+
+    replyButton.addEventListener("mouseout", () => {
+      replyButton.firstElementChild.src = `${replyBlueIcon}`;
+    })
+
+    // Compose a reply template
+    replyButton.addEventListener("click", () => {
       compose_email(email);
     })
 

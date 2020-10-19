@@ -57,6 +57,15 @@ div.container {
     animation-play-state: paused;
 }
 
+/* Gradient style */
+.gradient {
+    background: linear-gradient(0deg, rgba(169,34,195,1) 0%, rgba(66,151,195,1) 23%, rgba(34,193,195,1) 50%, rgba(61,119,194,1) 78%, rgba(169,34,192,1) 100%);
+    background-size: 2000px 4000px;
+    -webkit-animation: bg-gradient-img 15s infinite alternate both;
+    animation: bg-gradient-img 15s infinite alternate both;
+    animation-play-state: paused;
+}
+
 /* Abstract animation */
 @-webkit-keyframes bg-abstract-img {
     0% {background-position: 0% 0%;}
@@ -66,16 +75,6 @@ div.container {
 @keyframes bg-abstract-img {
     0% {background-position: 0% 0%;}
     100% {background-position: 0% 20%;}
-}
-
-
-/* Gradient styles */
-.gradient {
-    background: linear-gradient(0deg, rgba(169,34,195,1) 0%, rgba(66,151,195,1) 23%, rgba(34,193,195,1) 50%, rgba(61,119,194,1) 78%, rgba(169,34,192,1) 100%);
-    background-size: 2000px 4000px;
-    -webkit-animation: bg-gradient-img 15s infinite alternate both;
-    animation: bg-gradient-img 15s infinite alternate both;
-    animation-play-state: paused;
 }
 
 /* Gradient animation */
@@ -211,8 +210,26 @@ textarea {
 }
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
+/* ------ Details view styles ------ */
+#reply {
+    margin-top: 10px;
+}
+
+#reply img {
+    position: relative;
+    top: -2px;
+    margin-right: 5px;
+}
+
+/* Make text transition as fast as icon color transition */
+#reply:hover {
+    transition: color 0s 0s;
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
+
 /* ------ Scrollbar styles ------ */
-/* comman scrollbar styles */
+/* Common scrollbar styles */
 #emails-view::-webkit-scrollbar {
     width: 0.5em;
 }
@@ -275,7 +292,6 @@ textarea {
 .gradient #emails-view::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(0deg, rgba(61,119,194, 0.7) 0%,  rgba(169,34,195, 0.7) 100%);
 }
-
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
 
