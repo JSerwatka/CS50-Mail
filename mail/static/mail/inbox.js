@@ -1,5 +1,3 @@
-// TODO: Save history to use back/forward withou logging out
-
 document.addEventListener('DOMContentLoaded', function() {
 
   // Use buttons to toggle between views
@@ -40,26 +38,30 @@ function load_mailbox(mailbox) {
         newEmailBlock(email, emailsView, mailbox);
       })
 
-      // Listen for archive-icon click -> archive an email v unarchive-icon -> unarchive
-      document.querySelectorAll(".archive-icon, .unarchive-icon").forEach(element => {
-        element.addEventListener("click", (event) => {
-          event.stopPropagation();
-          // Get email's id
-          let email = event.target.parentNode.parentNode;
+      // Sent mailbox doesn't have option to archive
+      if (mailbox !== "sent") {
+        // Listen for archive-icon click -> archive an email v unarchive-icon -> unarchive
+        document.querySelectorAll(".archive-icon, .unarchive-icon").forEach(element => {
+          element.addEventListener("click", (event) => {
+            event.stopPropagation();
+            // Get email's id
+            let email = event.target.parentNode.parentNode;
 
-          // Run hide animation
-          email.style.animationPlayState = "running";
+            // Run hide animation
+            email.style.animationPlayState = "running";
 
-          // After animation - archive an email
-          email.addEventListener("animationend", () => {
-            // Check if archive or unarchive
-            let toArchive = (event.target.parentNode.className === "archive-icon") ? true : false;
-            
-            // Archive/unarchive this email
-            archiveControl(email, event.target, toArchive);
-          });
-        })
-      });   
+            // After animation - archive an email
+            email.addEventListener("animationend", () => {
+              // Check if archive or unarchive
+              let toArchive = (event.target.parentNode.className === "archive-icon") ? true : false;
+              
+              // Archive/unarchive this email
+              archiveControl(email, event.target, toArchive);
+            });
+          })
+        });  
+      }
+ 
   });
 }
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
@@ -199,15 +201,10 @@ function newEmailBlock(email, emailsView, mailbox) {
   emailBlock.className = "email-block";
   emailBlock.id = email.id;
   
-  // Check id read/unread and set proper class
-  if (email.read) {
-    emailBlock.classList.add("read");
-    emailBlock.classList.remove("unread");
-  } 
-  else {
+  // Apply unread bg if mail unread
+  if (!email.read) {
     emailBlock.classList.add("unread");
-    emailBlock.classList.remove("read");
-  }
+  } 
 
   // Save recipiants/sender as a single variable
   let users = (mailbox === "sent") ? email.recipients[0] : email.sender;
@@ -225,12 +222,17 @@ function newEmailBlock(email, emailsView, mailbox) {
     <div class=${isArchivedClass}><img src="${isArchivedIcon}"></div>
     <!-- <div>Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->`;
   
+  // Hide archive button for sent mailbox
+  if (mailbox === "sent") {
+    emailBlock.querySelector(".archive-icon").classList.add("hidden");
+  }
+
   // Listen for email block click -> open the email 
   emailBlock.addEventListener("click", () => {
     openEmail(email)
   })  
   
-  // Inject to main mailbox container
+  // Inject to the main mailbox container
   emailsView.appendChild(emailBlock);
 }
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 

@@ -110,6 +110,7 @@ div.container {
 .email-block {
     padding: 0px 30px;
     margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.6);
     border: 1px solid rgb(100, 99, 99);
     max-width: 100%;
     box-sizing: border-box;
@@ -151,17 +152,9 @@ div.container {
 }
 
 .email-block:hover {
+    background: rgba(255, 255, 255, 0.85);
     border: 1px solid rgb(53, 52, 52);
     cursor: pointer;
-}
-
-/* Read email */
-.email-block.read {
-    background: rgba(255, 255, 255, 0.6);
-}
-
-.email-block.read:hover {
-    background: rgba(255, 255, 255, 0.85);
 }
 
 /* Unread email */
@@ -216,6 +209,10 @@ div.container {
     border-radius: 35%;
     box-shadow: 0px 0px 13px 0.1px rgba(146, 144, 144, 0.79), 0 0 20px 1.5px inset rgba(146, 144, 144, 0.5);
     cursor: pointer;
+}
+
+.archive-icon.hidden {
+    visibility: hidden;
 }
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 
