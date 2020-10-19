@@ -106,7 +106,7 @@ div.container {
 
 #backgroud-button {
     position: relative;
-    top: -30px;
+    top: -58px;
     float: right;
 }
 /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
@@ -320,6 +320,7 @@ textarea {
 /* User email font */
 .container h2 {
     font-family: "Sora";
+    margin-bottom: 20px;
 }
 
 @font-face {
