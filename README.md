@@ -7,6 +7,7 @@
 Design a front-end for an email client that makes API calls to send and receive emails.
 
 All requirements can be viewed here: https://cs50.harvard.edu/web/2020/projects/3/mail/
+
 Live version can be viewed here: http://slepysledz.pythonanywhere.com/
 
 ## Preview
