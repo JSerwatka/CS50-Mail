@@ -27,7 +27,7 @@ Live version can be viewed here: http://slepysledz.pythonanywhere.com/
 To set up this project on your computer:
 1. Download this project
     ```
-    gti clone https://github.com/JSerwatka/CS50-Network.git
+    gti clone https://github.com/JSerwatka/CS50-Mail.git
     ```
 2. Install all necessary dependencies
     ```
